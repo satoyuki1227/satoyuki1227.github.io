@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+*,*::before,*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: rgb(0, 108, 151);
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}

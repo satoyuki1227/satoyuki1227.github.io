@@ -1,0 +1,541 @@
+@charset "utf-8";
+
+body {
+  background: #000;
+  position: relative;
+  width: 100vw;
+  color: #fff;
+  overflow: hidden;
+  cursor: none;
+
+  @media screen and (max-width:767px) {
+    overflow: auto;
+    cursor: auto;
+  }
+}
+
+#cursor {
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: rgb(255, 0, 0);
+  width: 7px;
+  height: 7px;
+  border-radius: 100%;
+  pointer-events: none;
+
+  @media screen and (max-width:767px) {
+    display: none;
+  }
+}
+
+#stalker {
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  transition: 0.08s;
+  opacity: .1;
+  pointer-events: none;
+
+  @media screen and (max-width:767px) {
+    display: none;
+  }
+}
+
+a:focus,
+*:focus {
+  outline: none;
+}
+
+a:hover {
+  cursor: none;
+
+  @media screen and (max-width:767px) {
+    cursor: pointer;
+  }
+}
+
+.into-ani {
+  position: absolute;
+  z-index: 99;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  // animation
+  animation: slide-out-blurred-top 0.66s 9s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+
+  @media screen and (max-width:767px) {
+    display: none;
+  }
+
+  .circle div:nth-child(1) {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    border-radius: 50%;
+    background: rgb(211, 207, 221);
+    animation: bounce-in 1.1s 2.0s both,
+      puff-out-center 1s 3.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards,
+      flicker-out-1 2s 4.6s linear forwards;
+  }
+
+  .circle div {
+    transform: scale(0);
+    position: absolute;
+    top: calc((50% - 10px));
+    left: calc((50% - 10px));
+    width: 20px;
+    height: 20px;
+    background: rgb(211, 207, 221);
+    border-radius: 50%;
+
+    &:nth-child(2) {
+      animation: move_01 2s 5.5s;
+    }
+
+    &:nth-child(3) {
+      animation: move_02 2s 5.5s;
+    }
+
+    &:nth-child(4) {
+      animation: move_03 2s 5.5s;
+    }
+
+    &:nth-child(5) {
+      animation: move_04 2s 5.5s;
+    }
+  }
+
+  .big {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    div {
+      position: absolute;
+      top: calc((50% - 1500px));
+      left: calc((50% - 1500px));
+      width: 3000px;
+      height: 3000px;
+      border-radius: 50%;
+      transform: scale(0);
+
+      &:nth-child(1) {
+        background: rgb(211, 207, 221);
+        animation: big .5s 7.5s forwards;
+      }
+
+      &:nth-child(2) {
+        background: rgb(172, 0, 0);
+        animation: big .5s 8.0s forwards;
+      }
+
+      &:nth-child(3) {
+        background: #000000;
+        animation: big .5s 8.5s forwards;
+      }
+    }
+  }
+}
+
+.header {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  border-right: 1px dotted #333;
+
+  @media screen and (max-width:767px) {
+    z-index: 100;
+    transform: translateX(-200%);
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    transition: all 2.25s;
+
+    &.active {
+      transform: translateX(0%);
+      visibility: visible;
+      opacity: 1;
+      transition-duration: 0.5s;
+      transition-delay: 0.15s;
+    }
+  }
+
+  .logo {
+    display: block;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    font-size: 2.4rem;
+    letter-spacing: 1.2px;
+    padding: 10rem 0;
+    text-align: center;
+
+    @media screen and (max-width:767px) {
+      font-size: 3.2rem;
+      padding: 7rem 0 4rem;
+    }
+  }
+
+  .nav {
+    width: 100%;
+    padding: 2rem 5rem;
+
+    &__list {
+      width: 100%;
+
+      &__item {
+        margin-top: 50px;
+        text-align: center;
+        letter-spacing: 1px;
+        font-weight: bold;
+        font-size: 1.8rem;
+
+        @media screen and (max-width:767px) {
+          font-size: 2.2rem;
+          margin-top: 70px;
+        }
+
+        a {
+          display: inline-block;
+          color: #fff;
+
+          &::after {
+            content: '';
+            display: block;
+            width: 0;
+            margin: 10px auto 0;
+            border-bottom: 3px solid #fff;
+            transition: width 0.3s ease-in-out;
+
+            @media screen and (max-width:767px) {
+              display: none;
+            }
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .copy {
+    display: block;
+    margin: 120px auto 0;
+    font-size: 1.2rem;
+    color: #999;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.navToggle {
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    position: fixed;
+    /* bodyに対しての絶対位置指定 */
+    right: 12px;
+    top: 13px;
+    width: 42px;
+    height: 51px;
+    cursor: pointer;
+    z-index: 1000;
+    text-align: center;
+
+    span {
+      display: block;
+      position: absolute;
+      /* .navToggleに対して */
+      width: 30px;
+      border-bottom: solid 3px rgb(255, 255, 255);
+      -webkit-transition: .55s ease-in-out;
+      -moz-transition: .55s ease-in-out;
+      transition: 0.55s ease-in-out;
+      left: 6px;
+
+      &:nth-child(1) {
+        top: 9px;
+      }
+
+      &:nth-child(2) {
+        top: 18px;
+      }
+
+      &:nth-child(3) {
+        top: 27px;
+      }
+    }
+  }
+}
+
+/* 最初のspanをマイナス45度に */
+.navToggle.active span:nth-child(1) {
+  top: 18px;
+  left: 6px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  border-bottom-color: #ccc;
+}
+
+/* 2番目と3番目のspanを45度に */
+.navToggle.active span:nth-child(2) {
+  transform: translateX(35px);
+  opacity: 0;
+}
+
+
+.navToggle.active span:nth-child(3) {
+  top: 18px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-bottom-color: #ccc;
+}
+
+.wrap {
+  position: relative;
+  left: 20vw;
+  width: 80%;
+
+  @media screen and (max-width:767px) {
+    width: 100%;
+    left: 0;
+  }
+}
+
+// ---------top----------
+.top {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  &__content {
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .flip {
+      display: inline-block;
+      font-size: 9.6rem;
+
+      // animation
+      &--1 {
+        animation: ani__flip 1.5s 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--2 {
+        animation: ani__flip 1.5s 1.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--3 {
+        animation: ani__flip 1.5s 1.9s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--4 {
+        animation: ani__flip 1.5s 2.6s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--5 {
+        animation: ani__flip 1.5s 3.3s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--6 {
+        animation: ani__flip 1.5s 4.0s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--7 {
+        animation: ani__flip 1.5s 4.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--8 {
+        animation: ani__flip 1.5s 5.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--9 {
+        animation: ani__flip 1.5s 6.1s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+
+      &--10 {
+        animation: ani__flip 1.5s 6.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate infinite;
+      }
+    }
+  }
+}
+
+.about {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  @media screen and (max-width:767px) {
+    height: auto;
+  }
+
+  .title {
+    margin: 100px;
+    padding-top: 100px;
+    font-size: 3.2rem;
+
+    @media screen and (max-width:767px) {
+      text-align: center;
+    }
+  }
+
+  &__container {
+    display: flex;
+
+    width: 100%;
+    justify-content: space-around;
+
+    @media screen and (max-width:767px) {
+      flex-direction: column;
+      align-content: center;
+    }
+
+    &__img {
+      flex-basis: 30%;
+
+      @media screen and (max-width:767px) {
+        text-align: center;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+
+        @media screen and (max-width:767px) {
+          width: 70%;
+          padding: 20px;
+        }
+      }
+    }
+
+    &__text {
+      flex-basis: 35%;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+      line-height: 3.2rem;
+
+      @media screen and (max-width:767px) {
+        padding: 20px;
+      }
+    }
+  }
+}
+
+.works {
+  overflow-y: scroll;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  @media screen and (max-width:767px) {
+    overflow-y: initial;
+    height: auto;
+  }
+
+  .title {
+    margin: 0 100px 100px;
+    padding-top: 100px;
+    font-size: 3.2rem;
+
+    @media screen and (max-width:767px) {
+      text-align: center;
+    }
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__item {
+      flex-basis: 60%;
+      margin-bottom: 400px;
+
+      & a span {
+        position: absolute;
+        display: block;
+        z-index: 1;
+        bottom: 0;
+        width: 60%;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        text-align: left;
+        padding: 20px;
+      }
+
+      @media screen and (max-width:767px) {
+        flex-basis: 70%;
+        margin-bottom: 30vh;
+      }
+
+
+      &__img {
+        width: 100%;
+        filter: blur(2px);
+        transition: 0.6s 0s ease-in-out all;
+
+        @media screen and (max-width:767px) {
+          filter: blur(0);
+        }
+
+      }
+
+      &:hover img {
+        transform: scale(0.95);
+        filter: blur(0);
+
+        @media screen and (max-width:767px) {
+          filter: blur(0);
+          transform: scale(1);
+        }
+      }
+
+      &__com {
+        padding: 0 20px 20px;
+        opacity: 0;
+        transition: 0.6s ease-in-out;
+
+        @media screen and (max-width:767px) {
+          padding: 20px;
+          opacity: 1;
+        }
+      }
+
+      &:hover &__com {
+        transform: translateY(25px);
+        opacity: 1;
+
+        @media screen and (max-width:767px) {
+          transform: initial;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SatoYuki</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/origin.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/key.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('a[href^=#]').click(function () {
+        $('.wrap').css('opacity', '0').animate({
+          'opacity': '1'
+        }, 1500);
+      });
+    });
+  </script>
+  <script>
+    if (!navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
+      $(function () {
+        var body = document.body;
+        var cursor = document.createElement("div");
+        var stalker = document.createElement("div");
+        cursor.id = "cursor";
+        stalker.id = "stalker";
+        body.appendChild(cursor);
+        body.appendChild(stalker);
+        body.addEventListener("mousemove", function (e) {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+          stalker.style.left = e.clientX + "px";
+          stalker.style.top = e.clientY + "px";
+        }, false);
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <h1><a href="#top" class="logo">SatoYuki</a></h1>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__list__item"><a href="#top">TOP</a></li>
+        <li class="nav__list__item"><a href="#about">ABOUT</a></li>
+        <li class="nav__list__item"><a href="#works">DEMO</a></li>
+      </ul>
+    </nav>
+    <small class="copy">&copy;created by SatoYuki</small>
+  </header>
+  <div class="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="wrap">
+    <div class="top" id="top">
+      <div class="top__content">
+        <span class="flip flip--1">H</span>
+        <span class="flip flip--2">E</span>
+        <span class="flip flip--3">L</span>
+        <span class="flip flip--4">L</span>
+        <span class="flip flip--5">O</span>
+        <br>
+        <span class="flip flip--6">W</span>
+        <span class="flip flip--7">O</span>
+        <span class="flip flip--8">R</span>
+        <span class="flip flip--9">L</span>
+        <span class="flip flip--10">D</span>
+      </div>
+    </div>
+    <div class="about" id="about">
+      <h2 class="title">about</h2>
+      <div class="about__container">
+        <figure class="about__container__img">
+          <img src="./image/self.png" alt="">
+        </figure>
+        <p class="about__container__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </p>
+      </div>
+    </div>
+    <div class="works" id="works">
+      <h2 class="title">DEMO</h2>
+      <div class="works__container">
+        <!-- さとうゆうきポートフォリオ -->
+        <div class="works__container__item">
+          <a href="./osatou_ver2/index.html" target="_blank">
+            <img src="./image/sam_1.png" alt="demo" class="works__container__item__img">
+          </a>
+          <p class="works__container__item__com">
+            さとうゆうきのポートフォリオ
+          </p>
+        </div>
+        <!-- SNAPPERS -->
+        <div class="works__container__item">
+          <a href="./SNAPPERS/index.html" target="_blank">
+            <img src="./image/sam_2.png" alt="demo" class="works__container__item__img">
+          </a>
+          <p class="works__container__item__com">
+            架空の写真家「SNAPPERS」のポートフォリオサイト
+          </p>
+        </div>
+        <!-- シングルページレイアウト -->
+        <div class="works__container__item">
+          <a href="./singlepage-layout/index.html" target="_blank">
+            <img src="./image/sam_3.png" alt="demo" class="works__container__item__img">
+          </a>
+          <p class="works__container__item__com">
+            基本的なLPの練習で制作
+          </p>
+        </div>
+        <!-- スタンダードなレイアウト -->
+        <div class="works__container__item">
+          <a href="./standard-layout/index.html" target="_blank">
+            <img src="./image/sam_4.png" alt="demo" class="works__container__item__img">
+          </a>
+          <p class="works__container__item__com">
+            スタンダードなレイアウトの練習
+          </p>
+        </div>
+        <!-- jQueryDEMO -->
+        <div class="works__container__item">
+          <a href="./jQueryall/index.html" target="_blank">
+            <img src="./image/sam_5.png" alt="demo" class="works__container__item__img">
+          </a>
+          <p class="works__container__item__com">
+            jQueryを使ったデモ制作
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      $('.navToggle').click(function () {
+        $(this).toggleClass('active');
+
+        if ($(this).hasClass('active')) {
+          $('.header').addClass('active');
+        } else {
+          $('.header').removeClass('active');
+        }
+      });
+      $(function () {
+        $('.header a').click(function () {
+          $('.header').removeClass('active');
+          $('.navToggle').removeClass('active');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
