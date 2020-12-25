@@ -272,8 +272,10 @@ a:hover {
 }
 
 .top__content .flip {
+  z-index: 200;
   display: inline-block;
   font-size: 9.6rem;
+  
 }
 
 .top__content .flip--1 {
